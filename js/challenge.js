@@ -111,7 +111,7 @@ class Deck {
         const pile = this[pileName];
         console.log(pile, this.hand.cards, card, pile.playCard(card))
         if (pile && this.hand.cards.includes(card) && pile.playCard(card)) {
-            this.hand.cards = this.hand.cards.filter(c => c !== card); // Remove the card from the hand
+            this.hand.cards = this.hand.cards.filter(c => c !== card);
             return true;
         }
         return false;
