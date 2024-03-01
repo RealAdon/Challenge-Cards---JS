@@ -19,6 +19,23 @@ h1 {
     display: none;
 }
 
+#quit {
+    display:none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    padding: 10px 20px;
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
 .center-container {
     display: flex;
     justify-content: center;
@@ -43,10 +60,9 @@ h1 {
     text-shadow: 0px 0px 20px rgba(255, 255, 255, 1);
 }
 
-.container {
+#container {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 .top, .bottom {
@@ -100,7 +116,18 @@ h1 {
 }
 
 .draw_cards_button {
-    filter: grayscale(100%);
+    background-image: url('../images/card_background_black_and_white.png');
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
 }
 
 

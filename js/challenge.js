@@ -98,23 +98,33 @@ class Deck {
 
     checkStateOfChallenge() {
         if (this.hand.cards.length === 0 && this.cards.length === 0) {
-        return 'won';
+          return 'won';
         } else if (this.hand.cards.length > this.hand.maxCards - 2 && !this.checkPossibleMoves()) {
-        return 'lost';
-        } else if (!this.checkPossibleMoves() && this.hand.cards.length <= this.hand.maxCards - 2) {
-        return 'draw';
+          return 'lost';
+        } else if (this.hand.cards.length <= this.hand.maxCards - 2) {
+          return 'draw';
         }
         return 'ongoing';
     }
 
     playCard(card, pileName) {
-        const pile = this[pileName];
-        console.log(pile, this.hand.cards, card, pile.playCard(card))
-        if (pile && this.hand.cards.includes(card) && pile.playCard(card)) {
-            this.hand.cards = this.hand.cards.filter(c => c !== card);
-            return true;
-        }
-        return false;
+      // Convert card value to integer
+      card = parseInt(card);
+      const pile = this[pileName];
+      if (!pile) {
+          console.error(`Pile ${pileName} not found.`);
+          return false;
+      }
+      if (!this.hand.cards.includes(card)) {
+          console.error(`Card ${card} not found in hand.`);
+          return false;
+      }
+      if (pile.playCard(card)) {
+          this.hand.cards = this.hand.cards.filter(c => c !== card);
+          return true;
+      } else {
+          return false;
+      }
     }
 }
 
