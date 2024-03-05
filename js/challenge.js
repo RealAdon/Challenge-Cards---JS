@@ -83,7 +83,7 @@ class Deck {
     dealCards() {
         const cardsToDraw = this.hand.maxCards - this.hand.cards.length;
         if (cardsToDraw > 0) {
-        this.hand.cards.push(...this.cards.splice(0, cardsToDraw));
+        this.hand.cards.push(...this.cards.splice(0, cardsToDraw)); // Draw cards from the deck
         this.hand.cards.sort((a, b) => a - b); // Sort the hand
         return true;
         }
